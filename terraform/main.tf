@@ -6,6 +6,7 @@ terraform {
     }
  }
  
+ #Adding a backend
  backend "s3" {
    bucket  = "my-terraform-state-bucket-101"
    region = "us-east-1"
@@ -18,6 +19,7 @@ provider "aws" {
  region = "us-east-1"
 }
  
+# Creating a Amazon Linux 2 VM
 resource "aws_instance" "test_instance" {
  ami           = "ami-01fccab91b456acc2"
  instance_type = "t2.nano"
