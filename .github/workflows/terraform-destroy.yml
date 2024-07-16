@@ -7,6 +7,7 @@ env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE}}
+  AWS_REGION: 'us-east-1'
 
 jobs:
  tf-destroy:
@@ -16,8 +17,7 @@ jobs:
       run:
         shell: bash
         working-directory: ./terraform
-   env:
-      AWS_REGION: 'us-east-1'
+      
    steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -27,7 +27,7 @@ jobs:
 
       - name: Terraform Init
         id: init
-        run: terraform init -backend-config="bucket=$BUCKET_TF_STATE" 
+        run: terraform init
         
       - name: Show Destroy plan
         run: terraform plan -destroy
