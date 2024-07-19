@@ -23,7 +23,7 @@ provider "aws" {
 # Creating a Amazon Linux 2 VM
 resource "aws_instance" "test_instance" {
  ami           = "ami-01fccab91b456acc2"
- instance_type = "t2.nano"
+ instance_type = "t2.micro"
  tags = {
    Name = "test_instance"
  }
